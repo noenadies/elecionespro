@@ -5,6 +5,7 @@
 <style>
 body {
   font-family: "Lato", sans-serif;
+  height: 100%;
 }
 
 .sidenav {
@@ -41,87 +42,68 @@ body {
   margin-left: 50px;
 }
 
+#main {
+  transition: margin-left .5s;
+  padding: 16px;
+  height: 100%;
+ 
+  z-index: 1;
+}
+
 @media screen and (max-height: 450px) {
   .sidenav {padding-top: 15px;}
   .sidenav a {font-size: 18px;}
 }
+
+
 #idspanmenu{
-	font-size:30px;cursor:pointer;
-	position: absolute;
-	top: 2%;
+    position: absolute;
+    top: 12px;
+    left: 190px;
+    z-index: 10;
+    font-size: 40px;
+
+    cursor:pointer;
+ 
 }
 
-#idimggif{
-	width:40px; 
-	height:40px; 
-
-}
-
-#idcontenido{
-
-	position: absolute;
-	top: 0%;
-	left: 0%;
-	height: 100%;
-	width: 100%;
-	
-	background-color: rgb(255, 0, 0);
-	z-index: 12;
-}
-
-
-#idacerrarmap{
-	position: absolute;
-  top:33%;
-  right: 25px;
-  font-size: 36px;
-  margin-left: 50px;
-z-index: 22;
-}
 </style>
 </head>
 <body>
-		<a id="idacerrarmap" href="#" class="" onclick="cerradiv('idcontenido');">&times;</a>
-<div  id="idcontenido" >  </div>
+
 <div id="mySidenav" class="sidenav">
-  <a href="#" class="closebtn" onclick="closeNav()">&times;</a>
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
   <a href="#">About</a>
   <a href="#">Services</a>
   <a href="#">Clients</a>
-  <a  onclick="abrirdiv('idcontenido');" href="#">Contact</a>
+  <a href="#">Contact</a>
 </div>
 
+<div id="main">
 
-<span id="idspanmenu"  onclick="openNav()"> <img id="idimggif" src="gf.gif" alt="Flowers in Chania"></span>
 
+</div>
+<span id="idspanmenu" onclick="openNav()">&#9776; </span>
 <script>
 
-	var vw=window.innerWidth;
-	var vh= window.innerHeight;
+var vh=window.innerHeight;
+    document.getElementById("main").style.height=String(vh)+"px";
 function openNav() {
   document.getElementById("mySidenav").style.width = "250px";
+  document.getElementById("main").style.marginLeft = "250px";
+  document.getElementById("idspanmenu").style.zIndex=0;
 }
 
 function closeNav() {
   document.getElementById("mySidenav").style.width = "0";
+  document.getElementById("main").style.marginLeft= "0";
+  document.getElementById("idspanmenu").style.zIndex=1;
 }
 
-function cerradiv(st){
-	document.getElementById(st).style.width="0";
-	document.getElementById(String("idacerrarmap")).style.display="none";
-}
-function abrirdiv(st){
-	document.getElementById(String(st)).style.width=String(vw)+"px";
-	document.getElementById(String("idacerrarmap")).style.display="block";
-	
-	document.getElementById("mySidenav").style.width = "0px";
-initMap() ;
-       
-}
 function initMap() {
         var myLatLng = {lat: -25.363, lng: 131.044};
 
-        var map = new google.maps.Map(document.getElementById('idcontenido'), {
+        var map = new google.maps.Map(document.getElementById('main'), {
           zoom: 4,
           center: myLatLng
         });
@@ -133,12 +115,17 @@ function initMap() {
         });
       }
 
-cerradiv("idcontenido");
-</script>
-  <div class="toggle-btn"></div> 
 
-  <script async defer
-  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCV4ya46Yoag-iGeJb5SUwZ2q1Irx0UjnU&callback=initMap">
-   </script>
+
+
+
+
+
+
+
+</script>
+     <script async defer
+     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCV4ya46Yoag-iGeJb5SUwZ2q1Irx0UjnU&callback=initMap">
+      </script>
 </body>
 </html> 
