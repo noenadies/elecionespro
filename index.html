@@ -59,7 +59,7 @@ body {
 #idspanmenu{
     position: absolute;
     top: 12px;
-    left: 210px;
+    left: 222px;
     z-index: 10;
 
 
@@ -73,19 +73,74 @@ body {
 height:  40px;
 
 }
+
+#idmenuRegistrar{
+
+
+    height: 100%;
+    width: 0;
+display: block;
+    background-color: rgb(44, 40, 40);
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+opacity:0.7; 
+
+position: absolute;
+top: 0%;
+left: 120px;
+height: 100%;
+z-index: 11;
+}
+
+
+
+.cla {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.cla:hover {
+  color: #920101;
+}
+
+
+#idbtclmenuRegistra{
+position: absolute;
+top: 2%;
+left: 120px;
+font-size:30px; 
+z-index: 12;
+color: aqua;
+}
+
 </style>
 </head>
 <body>
 
+        <div id="idmenuRegistrar">
+                <a  href="javascript:void(0)" id="idbtclmenuRegistra" onclick="clmenuRegistrarv();">&times;</a>
+                <a class ="cla" href="#">Persona</a>
+                <a  class ="cla" href="#">Referido</a>
+                <a class ="cla" href="#">Clients</a>
+                <a class ="cla" href="#">Contact</a>
+              </div>
+
+
 <div id="mySidenav" class="sidenav">
-  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-  <a href="#">About</a>
+  <a id="idbtmenu1cl" href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <a onclick="opmenuRegistrarv();" href="#">Registrar</a>
   <a href="#">Services</a>
   <a href="#">Clients</a>
   <a href="#">Contact</a>
 </div>
 
 <div id="main">
+
 
 
 </div>
@@ -105,6 +160,27 @@ function closeNav() {
   document.getElementById("main").style.marginLeft= "0";
   document.getElementById("idspanmenu").style.zIndex=1;
 }
+
+
+
+function opmenuRegistrarv() {
+  document.getElementById("idmenuRegistrar").style.width = "150px";
+  document.getElementById("idbtmenu1cl").style.display = "none";
+}
+
+function clmenuRegistrarv() {
+    document.getElementById("idmenuRegistrar").style.width = "0px";
+
+    document.getElementById("idbtmenu1cl").style.display = "block";
+}
+
+
+
+
+
+
+
+
 
 function initMap() {
         var myLatLng = {lat: -25.363, lng: 131.044};
